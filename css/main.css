@@ -3,3 +3,530 @@ main.css - Stilurile principale ale paginii DevConnect
 Aici vom scrie: layout, header, sectiuni, carduri, formular, footer
 Vom completa acest fisier in Laboratorul 3
 */
+/* ====================================
+UTILITARE - clase de baza
+==================================== */
+.container {
+    max-width: var(--latime-maxima);
+    /* maxim 1200px */
+    margin-inline: auto;
+    /* centrat orizontal */
+    padding-inline: var(--spatiu-mare);
+    /* spatiu lateral pe mobile */
+}
+
+/* Titluri sectiuni - stil uniform */
+.sectiune-titlu {
+    font-size: var(--marime-mare);
+    color: var(--culoare-primara);
+    margin-bottom: var(--spatiu-mediu);
+    text-align: center;
+}
+
+/* ====================================
+HEADER - bara de navigatie
+==================================== */
+header {
+    background-color: var(--culoare-primara);
+    position: sticky;
+    /* ramane la top cand defilezi */
+    top: 0;
+    z-index: 100;
+    /* deasupra altor elemente */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    /* logo stanga, nav dreapta */
+    align-items: center;
+    padding-block: var(--spatiu-mediu);
+    /* spatiu sus/jos */
+}
+
+/* Logo-ul */
+
+.logo {
+    font-size: var(--marime-mare);
+    font-family: var(--font-titlu);
+    color: var(--text-deschis);
+    font-weight: 700;
+}
+
+.logo span {
+    color: var(--culoare-accent);
+    /* "Dev" in portocaliu */
+}
+
+.logo small {
+    font-size: var(--marime-mica);
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+/* Navigatia */
+header nav ul {
+    display: flex;
+    gap: var(--spatiu-mare);
+}
+
+header nav a {
+    color: var(--text-deschis);
+    font-weight: 500;
+    transition: color var(--tranzitie);
+}
+
+header nav a:hover {
+    color: var(--culoare-accent);
+    text-decoration: none;
+}
+
+/* ====================================
+HERO - bannerul principal
+==================================== */
+#hero {
+    background: linear-gradient(135deg,
+            var(--culoare-primara) 0%,
+            var(--culoare-secundara) 100%);
+    color: var(--text-deschis);
+    padding-block: var(--spatiu-sectiune);
+    text-align: center;
+}
+
+#hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    /* responsive: min 2rem, max 3.5rem */
+    font-weight: 800;
+    margin-bottom: var(--spatiu-mediu);
+
+}
+
+#hero .hero-subtitlu {
+    font-size: var(--marime-medie);
+    opacity: 0.9;
+    max-width: 600px;
+    margin-inline: auto;
+    margin-bottom: var(--spatiu-mediu);
+}
+
+#hero .hero-detalii {
+    font-size: var(--marime-normala);
+    opacity: 0.8;
+    margin-bottom: var(--spatiu-mare);
+}
+
+/* Butoanele hero */
+.hero-butoane {
+    display: flex;
+    gap: var(--spatiu-mediu);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--spatiu-sectiune);
+}
+
+.btn-primar {
+    background-color: var(--culoare-accent);
+    color: var(--text-deschis);
+    padding: 14px 32px;
+    border-radius: var(--raza-colturi);
+    font-weight: 700;
+    font-size: var(--marime-normala);
+    transition: background-color var(--tranzitie), transform var(--tranzitie);
+}
+
+.btn-primar:hover {
+    background-color: #d4610f;
+    text-decoration: none;
+    transform: translateY(-2px);
+    /* ridica usor la hover */
+}
+
+.btn-secundar {
+    background-color: transparent;
+    color: var(--text-deschis);
+    padding: 14px 32px;
+    border-radius: var(--raza-colturi);
+    font-weight: 600;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    transition: border-color var(--tranzitie), background-color var(--tranzitie);
+}
+
+.btn-secundar:hover {
+    border-color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+}
+
+/* Statistici hero */
+.hero-statistici {
+    display: flex;
+    justify-content: center;
+    gap: var(--spatiu-sectiune);
+    flex-wrap: wrap;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.stat-numar {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--culoare-accent);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: var(--marime-mica);
+    opacity: 0.8;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ====================================
+SECTIUNI - aspect comun
+==================================== */
+section {
+    padding-block: var(--spatiu-sectiune);
+}
+
+section h2 {
+    font-size: var(--marime-mare);
+    color: var(--culoare-primara);
+    text-align: center;
+    margin-bottom: var(--spatiu-mare);
+}
+
+/* ====================================
+SECTIUNEA DESPRE
+==================================== */
+#despre {
+    background-color: var(--fundal-card);
+}
+
+.despre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* doua coloane egale */
+    gap: var(--spatiu-mare);
+    align-items: start;
+
+}
+
+.despre-text p {
+    margin-bottom: var(--spatiu-mediu);
+    color: var(--text-secundar);
+    line-height: 1.8;
+}
+
+.despre-detalii ul li {
+    padding: var(--spatiu-mic) 0;
+    border-bottom: 1px solid #eee;
+    color: var(--text-secundar);
+}
+
+/* ====================================
+SECTIUNEA SPEAKERI
+==================================== */
+#speakeri {
+    background-color: var(--fundal-pagina);
+}
+
+/* Grid responsive: 3 coloane pe desktop, 1 pe mobile */
+.grid-speakeri {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spatiu-mare);
+}
+
+/* Cardul unui speaker */
+.card-speaker {
+    background: var(--fundal-card);
+    border-radius: var(--raza-colturi);
+    box-shadow: var(--umbra-card);
+    overflow: hidden;
+    transition: box-shadow var(--tranzitie), transform var(--tranzitie);
+}
+
+.card-speaker:hover {
+    box-shadow: var(--umbra-hover);
+    transform: translateY(-4px);
+    /* ridica cardul la hover */
+}
+
+.card-speaker figure img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    /* taie imaginea sa incapa in dreptunghi */
+}
+
+.card-speaker figcaption {
+    font-size: var(--marime-mica);
+    color: var(--text-secundar);
+    padding: var(--spatiu-mic) var(--spatiu-mediu);
+    background: #f8f9fa;
+}
+
+.card-speaker h3 {
+    padding: var(--spatiu-mediu) var(--spatiu-mediu) 4px;
+    font-size: var(--marime-normala);
+    color: var(--culoare-primara);
+}
+
+.card-speaker .titlu-job {
+    padding-inline: var(--spatiu-mediu);
+    font-size: var(--marime-mica);
+    color: var(--text-secundar);
+    margin-bottom: var(--spatiu-mic);
+}
+
+.card-speaker .sesiune {
+    padding: var(--spatiu-mic) var(--spatiu-mediu);
+    font-size: var(--marime-normala);
+    font-weight: 600;
+    color: var(--culoare-accent);
+}
+
+.card-speaker .data-sesiune {
+    padding: 4px var(--spatiu-mediu) var(--spatiu-mediu);
+    font-size: var(--marime-mica);
+    color: var(--text-secundar);
+}
+
+/* ====================================
+SECTIUNEA PROGRAM - tabel
+==================================== */
+#program {
+    background-color: var(--fundal-card);
+}
+
+#program h3 {
+    color: var(--culoare-secundara);
+    margin-bottom: var(--spatiu-mediu);
+    margin-top: var(--spatiu-mare);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    /* elimina spatiul dintre borduri */
+    margin-bottom: var(--spatiu-mare);
+    font-size: var(--marime-mica);
+}
+
+caption {
+    caption-side: top;
+    font-weight: 600;
+    color: var(--text-secundar);
+    text-align: left;
+    padding-bottom: var(--spatiu-mic);
+}
+
+th,
+td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #E9ECEF;
+}
+
+thead th {
+    background-color: var(--culoare-primara);
+    color: var(--text-deschis);
+    font-weight: 600;
+}
+
+tbody tr:hover {
+    background-color: #F0F4FF;
+    /* evidentiere rand la hover */
+}
+
+tfoot td {
+    color: var(--text-secundar);
+    font-size: var(--marime-mica);
+    font-style: italic;
+}
+
+/* ====================================
+SECTIUNEA CONTACT - formular
+==================================== */
+#contact {
+    background-color: var(--fundal-pagina);
+}
+
+#form-inregistrare {
+    max-width: 640px;
+    margin-inline: auto;
+}
+
+fieldset {
+    border: 1px solid #DEE2E6;
+    border-radius: var(--raza-colturi);
+    padding: var(--spatiu-mare);
+    margin-bottom: var(--spatiu-mare);
+    background: var(--fundal-card);
+}
+
+legend {
+    font-weight: 700;
+    color: var(--culoare-primara);
+    padding-inline: var(--spatiu-mic);
+    font-size: var(--marime-normala);
+}
+
+label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 6px;
+    margin-top: var(--spatiu-mediu);
+    color: var(--text-principal);
+}
+
+/* Prima label din fieldset nu are margin-top */
+fieldset label:first-of-type {
+    margin-top: 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #CED4DA;
+    border-radius: var(--raza-colturi);
+    font-size: var(--marime-normala);
+    transition: border-color var(--tranzitie), box-shadow var(--tranzitie);
+}
+
+input:focus,
+
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--culoare-secundara);
+    box-shadow: 0 0 0 3px rgba(46, 95, 172, 0.15);
+}
+
+/* Radio si checkbox - aliniate cu textul */
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: var(--spatiu-mic);
+    width: auto;
+}
+
+fieldset label:has(input[type="radio"]),
+fieldset label:has(input[type="checkbox"]) {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    margin-top: var(--spatiu-mic);
+}
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background-color: var(--culoare-accent);
+    color: var(--text-deschis);
+    font-size: var(--marime-normala);
+    font-weight: 700;
+    border-radius: var(--raza-colturi);
+    transition: background-color var(--tranzitie);
+}
+
+button[type="submit"]:hover {
+    background-color: #d4610f;
+}
+
+.mesaj-eroare {
+    color: #dc3545;
+    font-size: var(--marime-mica);
+    margin-top: 4px;
+    display: block;
+}
+
+/* ====================================
+FOOTER
+==================================== */
+footer {
+    background-color: var(--fundal-inchis);
+    color: rgba(255, 255, 255, 0.7);
+    padding-block: var(--spatiu-mare);
+    font-size: var(--marime-mica);
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spatiu-mediu);
+}
+
+footer nav {
+    display: flex;
+    gap: var(--spatiu-mare);
+}
+
+footer a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color var(--tranzitie);
+}
+
+footer a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+footer address {
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ====================================
+RESPONSIVE - Media Queries
+==================================== */
+@media (max-width: 768px) {
+
+    /* Header: logo si nav pe coloane */
+    header .container {
+        flex-direction: column;
+        gap: var(--spatiu-mediu);
+        text-align: center;
+    }
+
+    header nav ul {
+        gap: var(--spatiu-mediu);
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* Hero: statistici pe un rand */
+    .hero-statistici {
+        gap: var(--spatiu-mare);
+    }
+
+    /* Despre: o singura coloana */
+    .despre-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Speakeri: o singura coloana */
+    .grid-speakeri {
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer: centrat */
+    footer .container {
+        flex-direction: column;
+        text-align: center;
+
+    }
+}

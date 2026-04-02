@@ -4,3 +4,82 @@ Fiecare browser (Chrome, Firefox, Safari) are stiluri proprii implicite.
 Acest fisier le elimina pentru a avea un punct de plecare uniform.
 Vom completa acest fisier in Laboratorul 3
 */
+/*
+reset.css - Normalizarea stilurilor implicite ale browserului
+Acest cod se aplica INAINTE de main.css (ordinea din index.html conteaza)
+*/
+/* Aplica box-sizing: border-box la TOATE elementele.
+Fara aceasta, width: 200px + padding: 20px = 240px total (surprinzator!)
+Cu aceasta, width: 200px + padding: 20px = 200px total (intuitiv!) */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Elimina margini si padding implicite */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+li,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+    padding: 0;
+}
+
+/* Stiluri de baza pentru body */
+body {
+    font-family: var(--font-text);
+    font-size: var(--marime-normala);
+    color: var(--text-principal);
+    background-color: var(--fundal-pagina);
+    line-height: 1.6;
+}
+
+/* Elimina stilul de lista pentru nav-uri */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Imagini responsive implicit */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Linkuri - elimina subliniere implicita */
+a {
+    color: var(--culoare-secundara);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Butoane - elimina stiluri implicite browser */
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* Inputuri - mosteneste fontul din body */
+input,
+textarea,
+select {
+    font-family: inherit;
+    font-size: inherit;
+}
